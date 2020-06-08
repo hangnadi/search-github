@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Search Github</string>
+    <string name="search_hint">type your search</string>
 </resources>
