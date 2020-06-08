@@ -13,7 +13,7 @@ object Apps {
 object Version {
     //common
     const val kotlin = "1.3.72"
-    const val gradle = "3.6.2"
+    const val gradle = "4.0.0"
     const val material = "1.1.0-alpha05"
 
     //androidx
