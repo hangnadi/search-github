@@ -7,14 +7,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class BaseAdapter<F extends TypeFactory> extends RecyclerView.Adapter<AbstractViewHolder> {
 
     private final F adapterTypeFactory;
-    private final List<Visitable> visitables;
+    private final ArrayList<Visitable> visitables;
 
-    public BaseAdapter(F adapterTypeFactory, List<Visitable> visitables) {
+    public BaseAdapter(F adapterTypeFactory, ArrayList<Visitable> visitables) {
         this.adapterTypeFactory = adapterTypeFactory;
         this.visitables = visitables;
     }

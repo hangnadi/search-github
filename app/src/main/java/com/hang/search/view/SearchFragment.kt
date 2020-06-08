@@ -9,9 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hang.search.R
+import com.hang.search.base.Visitable
 import com.hang.search.view.recyclerview.SearchAdapter
+import com.hang.search.view.recyclerview.SearchAdapterTypeFactory
 import kotlinx.android.synthetic.main.fragment_search.*
+import java.util.*
 
 class SearchFragment : Fragment() {
 
@@ -20,7 +24,9 @@ class SearchFragment : Fragment() {
     }
 
     private lateinit var viewModel: SearchViewModel
-    private lateinit var adapter: SearchAdapter
+    private val adapterTypeFactory by lazy { SearchAdapterTypeFactory() }
+    private val list by lazy { ArrayList<Visitable<*>>() }
+    private val adapterView by lazy { SearchAdapter(adapterTypeFactory, list) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +43,12 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        recyclerViewResult.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = adapterView
+        }
+
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
 
