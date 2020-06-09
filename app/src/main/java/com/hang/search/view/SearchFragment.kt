@@ -38,7 +38,14 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        viewModel.userModelLiveData
+            .observe(viewLifecycleOwner, Observer { it ->
+                updateRecyclerView()
+            })
+    }
 
+    private fun updateRecyclerView() {
+        TODO("Not yet implemented")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,12 +66,7 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (s != null) {
                     val keyword = s.toString()
-                    activity?.let {
-                        viewModel.getUserLiveDataByKeyword(keyword)
-                            .observe(viewLifecycleOwner, Observer { it ->
-                                // TODO after data change
-                            })
-                    }
+                    viewModel.getUserLiveDataByKeyword(keyword)
                 }
             }
         })
