@@ -49,6 +49,8 @@ class SearchFragment : Fragment() {
             adapter = adapterView
         }
 
+        adapterView.showLoading()
+
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
 

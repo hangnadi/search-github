@@ -8,7 +8,7 @@ import com.hang.search.view.model.UserModel
 class UserViewHolder (itemView: View) : AbstractViewHolder<UserModel>(itemView) {
 
     companion object {
-        const val LAYOUT = R.layout.recyclerview_item_loading
+        const val LAYOUT = R.layout.recyclerview_item_user
     }
 
     override fun bind(model: UserModel) {

@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public class BaseAdapter<F extends TypeFactory> extends RecyclerView.Adapter<AbstractViewHolder> {
 
-    private final F adapterTypeFactory;
-    private final ArrayList<Visitable> visitables;
+    protected final F adapterTypeFactory;
+    protected final ArrayList<Visitable> visitables;
 
     public BaseAdapter(F adapterTypeFactory, ArrayList<Visitable> visitables) {
         this.adapterTypeFactory = adapterTypeFactory;
@@ -36,4 +36,10 @@ public class BaseAdapter<F extends TypeFactory> extends RecyclerView.Adapter<Abs
     public int getItemCount() {
         return visitables.size();
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return visitables.get(position).type(adapterTypeFactory);
+    }
+
 }
