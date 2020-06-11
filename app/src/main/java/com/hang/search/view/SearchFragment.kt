@@ -3,6 +3,7 @@ package com.hang.search.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hang.search.R
 import com.hang.search.base.Visitable
+import com.hang.search.data.SearchUserEntity
+import com.hang.search.network.Result
 import com.hang.search.view.recyclerview.SearchAdapter
 import com.hang.search.view.recyclerview.SearchAdapterTypeFactory
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -38,14 +41,21 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
-        viewModel.userModelLiveData
-            .observe(viewLifecycleOwner, Observer { it ->
-                updateRecyclerView()
+        viewModel.userData
+            .observe(viewLifecycleOwner, Observer {
+                when (it) {
+                    is Result.Success -> updateRecyclerView(it.data)
+                    is Result.Error -> showError(it.exception.message)
+                }
             })
     }
 
-    private fun updateRecyclerView() {
-        TODO("Not yet implemented")
+    private fun updateRecyclerView(data: SearchUserEntity?) {
+        Log.d(SearchFragment.javaClass.name, "updateRecyclerView: ")
+    }
+
+    private fun showError(message: String?) {
+        Log.d(SearchFragment.javaClass.name, "showError: $message")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
