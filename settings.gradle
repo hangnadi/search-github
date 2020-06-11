@@ -1,3 +1,2 @@
-include ':templateSrc'
 rootProject.name='Search Github'
 include ':app'
