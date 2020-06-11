@@ -1,9 +1,9 @@
 package com.hang.search.view.recyclerview
 
-import com.hang.search.view.model.UserModel
+import com.hang.search.data.UserData
 
 interface SearchTypeFactory {
 
-    fun type(userModel: UserModel):Int
+    fun type(userData: UserData):Int
 
 }

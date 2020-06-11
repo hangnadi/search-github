@@ -3,6 +3,7 @@ package com.hang.search.view.recyclerview
 import com.hang.search.base.BaseAdapter
 import com.hang.search.base.LoadingModel
 import com.hang.search.base.Visitable
+import com.hang.search.data.UserData
 import java.util.*
 
 class SearchAdapter(
@@ -24,6 +25,11 @@ class SearchAdapter(
             visitables.remove(loadingModel)
             notifyItemRemoved(visitables.size)
         }
+    }
+
+    fun setData(items: List<UserData>) {
+        visitables = items
+        notifyDataSetChanged()
     }
 
 }

@@ -52,6 +52,9 @@ class SearchFragment : Fragment() {
 
     private fun updateRecyclerView(data: SearchUserEntity?) {
         Log.d(SearchFragment.javaClass.name, "updateRecyclerView: ")
+        if (data != null) {
+            adapterView.setData(data.items)
+        }
     }
 
     private fun showError(message: String?) {
@@ -66,8 +69,6 @@ class SearchFragment : Fragment() {
             adapter = adapterView
         }
 
-        adapterView.showLoading()
-
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
 
@@ -76,7 +77,7 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (s != null) {
                     val keyword = s.toString()
-                    viewModel.getUserLiveDataByKeyword(keyword)
+                    if (keyword.length > 3) viewModel.getUserLiveDataByKeyword(keyword)
                 }
             }
         })

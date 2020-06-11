@@ -8,12 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class BaseAdapter<F extends TypeFactory> extends RecyclerView.Adapter<AbstractViewHolder> {
 
     protected final F adapterTypeFactory;
-    protected final ArrayList<Visitable> visitables;
+    protected List<Visitable> visitables;
 
     public BaseAdapter(F adapterTypeFactory, ArrayList<Visitable> visitables) {
         this.adapterTypeFactory = adapterTypeFactory;

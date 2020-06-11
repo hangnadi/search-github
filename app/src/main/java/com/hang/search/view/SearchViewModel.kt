@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hang.search.data.SearchUserEntity
-import com.hang.search.data.UserData
 import com.hang.search.network.Repository
 import com.hang.search.network.Result
-import com.hang.search.view.model.UserModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -1,6 +1,8 @@
 package com.hang.search.data
 
 import com.google.gson.annotations.SerializedName
+import com.hang.search.base.Visitable
+import com.hang.search.view.recyclerview.SearchTypeFactory
 
 class UserData (
     @SerializedName("avatar_url")
@@ -41,4 +43,9 @@ class UserData (
     val type: String,
     @SerializedName("url")
     val url: String
-)
+) : Visitable<SearchTypeFactory> {
+    override fun type(typeFactory: SearchTypeFactory): Int {
+        return typeFactory.type(this)
+    }
+
+}
